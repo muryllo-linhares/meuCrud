@@ -1,1 +1,2 @@
-export const API_URL = " https://fifty-chicken-type.loca.lt";
+
+export const API_URL = 'http://localhost:3000'

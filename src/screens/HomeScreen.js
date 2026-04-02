@@ -1,14 +1,14 @@
-import React, { useEffect, useState} from "react";
-import { View,Text,FlatList,Button} from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, Button } from "react-native";
 
 import styles from "../styles/styles";
 
-import { getPeople, deletePerson  } from "../servers/peopleCrud";
+import { getPeople, deletePerson } from "../servers/peopleCrud";
 
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({ navigation }) {
 
     // estado da lista 
-    const[people, setPeople] = useState([]);
+    const [people, setPeople] = useState([]);
 
     // carregar dados
     async function loadPeople() {
@@ -19,12 +19,12 @@ export default function HomeScreen({navigation}) {
     }
 
     //exect apo abrir tela 
-    useEffect(() =>{
+    useEffect(() => {
         loadPeople();
-    
-    },[]);
- 
-    return(
+
+    }, []);
+
+    return (
 
         <View style={styles.container}>
 
@@ -32,38 +32,53 @@ export default function HomeScreen({navigation}) {
 
             <Button
                 title="Adicionar Pessoa"
-                onPress={()=> navigation.navigate("AddEdit")}
-             />
+                onPress={() => navigation.navigate("AddEdit")}
+            />
 
             <FlatList
                 data={people}
-                keyExtractor={(item)=>item.id.toString()}
+                keyExtractor={(item) => item.id.toString()}
 
-                renderItem={({item})=>(
+                renderItem={({ item }) => (
                     <CardPersonal
                         item={item}
                         navigation={navigation}
                         refresh={loadPeople}
                     />
                 )}
-                />
+            />
         </View>
     );
 }
 
-    function CardPersonal({item,  navigation, refresh}){
+function CardPersonal({ item, navigation, refresh }) {
 
-        return(
+    return (
 
-            <View style={styles.card}>
-                <View>
+        <View style={styles.card}>
+            <View>
 
-                    <Text Style={styles.name}>
-                        {item.email}
-                    </Text>
+                <Text Style={styles.name}>
+                    {item.email}
+                </Text>
 
-                </View>
+            </View>
+            <view>
 
-                </View>
+                <Button
+                    title="Editar"
+                    onPress={() => navigation.navigate("AddEdit", { person: item })}
+                />
 
-    }
+                <Button
+                    title="Deletar"
+                    onPress={async () => {
+                        await deletePerson(item.id);
+                        refresh();
+                    }}
+                />
+            </view>
+
+        </View>
+    )
+}
