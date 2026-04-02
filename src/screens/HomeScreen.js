@@ -67,7 +67,7 @@ function CardPersonal({ item, navigation, refresh }) {
 
                 <Button
                     title="Editar"
-                    onPress={() => navigation.navigate("AddEdit", { person: item })}
+                    onPress={() => navigation.navigate("AddEditScreen", { person: item })}
                 />
 
                 <Button
