@@ -1,4 +1,12 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './src/screens/HomeScreen';
+import AddEditScreen from './src/screens/AddEditScreen';
+
+const Stack = createStackNavigator();
+
 export default function App() {
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="HomeScreen">
@@ -7,4 +15,5 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-} 
+
+}

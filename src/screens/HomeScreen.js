@@ -58,12 +58,12 @@ function CardPersonal({ item, navigation, refresh }) {
         <View style={styles.card}>
             <View>
 
-                <Text Style={styles.name}>
+                <Text style={styles.name}>
                     {item.email}
                 </Text>
 
             </View>
-            <view>
+            <View>
 
                 <Button
                     title="Editar"
@@ -77,7 +77,7 @@ function CardPersonal({ item, navigation, refresh }) {
                         refresh();
                     }}
                 />
-            </view>
+            </View>
 
         </View>
     )

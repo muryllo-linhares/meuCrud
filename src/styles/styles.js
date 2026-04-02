@@ -31,7 +31,7 @@ export default StyleSheet.create({
         fontSize:10
     },
 
-    buttom:{
+    button:{
         padding:10,
         backgroundColor:"#4CAF50",
         borderRadius:5
